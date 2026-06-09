@@ -1,78 +1,357 @@
 <!DOCTYPE html>
-<html>
-
-<style>
-   
-
-    
-    body 
-    {
-        overflow: hidden; /* Hide scrollbars */
-        background-color:white;
-    }
-
-    
-    #section1 
-    {
-        height: 600px;
-        background-color: rgb(255, 255, 255);
-    }
-    
-    h1
-    {
-        text-align: center;
-        font-family:verdana
-    }
-    
-     h3
-    {
-        text-align: center;
-        font-family:verdana
-    }
-    
-    h4
-    {
-        text-align: center;
-        font-family:verdana
-    }
-    
-    a
-    {
-    
-    	text-align: center;
-        font-family:verdana
-    
-    }
-
-
-</style>
-
-
+<html lang="en">
 <head>
-    
-    <title>Payment Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noah Wardell — Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1116; --panel:#141A21; --panel2:#171E26; --rule:#222A33;
+    --text:#C7D0D9; --head:#EAF0F6; --muted:#6E7886;
+    --amber:#E6A23C; --amber-dim:#7d6126; --link:#6FB6C9; --green:#5FB37A;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --sans:'Inter',-apple-system,system-ui,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .2s}
+  body.mode-portfolio{background:var(--bg);color:var(--text);padding:24px 20px 80px}
+  body.mode-ats{background:#3a3f45;color:#1a1a1a;padding:24px 16px 80px}
+  .wrap{max-width:880px;margin:0 auto}
 
+  .controls{position:sticky;top:0;z-index:30;border-radius:10px;padding:12px 14px;margin-bottom:22px;
+    background:rgba(14,17,22,.93);backdrop-filter:blur(8px);border:1px solid var(--rule)}
+  .crow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.crow+.crow{margin-top:9px}
+  .lbl{font-family:var(--mono);font-size:11px;color:var(--muted);margin-right:4px}.lbl b{color:var(--amber)}
+  .chip,.tbtn,.modebtn{font-family:var(--mono);font-size:12px;cursor:pointer;transition:.15s;border:1px solid var(--rule);background:var(--panel);color:var(--text)}
+  .chip{border-radius:20px;padding:6px 13px}.chip:hover{border-color:var(--amber-dim)}
+  .chip.on{background:var(--amber);color:#1a1206;border-color:var(--amber);font-weight:600}
+  .tbtn{border-radius:6px;padding:6px 12px;color:var(--muted)}.tbtn:hover{border-color:var(--amber-dim);color:var(--head)}
+  .modebtn{border-radius:6px;padding:6px 14px}.modebtn.on{background:var(--link);color:#06141a;border-color:var(--link);font-weight:600}
+  .sp{flex:1}
 
-    
+  /* PORTFOLIO */
+  .p .term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--panel);border:1px solid var(--rule);border-bottom:none;border-radius:8px 8px 0 0}
+  .dot{width:11px;height:11px;border-radius:50%}.dot.r{background:#E06C5B}.dot.y{background:#E6A23C}.dot.g{background:#5FB37A}
+  .p .tt{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .p .hero{background:var(--panel);border:1px solid var(--rule);border-radius:0 0 8px 8px;padding:30px 26px 34px}
+  .p .cmdline{font-family:var(--mono);font-size:14px;color:var(--muted)}
+  .p .cmdline .u{color:var(--amber)}.p .cmdline .pp{color:var(--link)}.p .cmdline .c{color:var(--head)}
+  .p .cursor{display:inline-block;width:9px;height:17px;background:var(--amber);transform:translateY(3px);margin-left:2px;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .p .name{font-family:var(--mono);font-weight:700;color:var(--head);font-size:clamp(30px,6vw,46px);letter-spacing:1px;margin:18px 0 4px;line-height:1.05}
+  .p .role{font-family:var(--mono);font-size:13px;color:var(--amber);margin-bottom:16px}
+  .p .blurb{max-width:66ch}.p .blurb .hl{color:var(--head);font-weight:500}
+  .p .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-family:var(--mono);font-size:12.5px}
+  .p .meta span,.p .meta a{color:var(--muted);text-decoration:none;display:inline-flex;gap:7px;align-items:center}
+  .p .meta a{color:var(--link)}.p .meta a:hover{color:var(--head)}.p .meta .k{color:var(--amber-dim)}
+  .p section{margin-top:44px}
+  .p .sechead{font-family:var(--mono);font-size:13.5px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .p .sechead .u{color:var(--amber)}.p .sechead .pp{color:var(--link)}.p .sechead .c{color:var(--head)}.p .sechead .note{font-size:11px;color:var(--muted)}
+  .p .secsub{font-size:13px;color:var(--muted);margin-bottom:20px}.p .secsub a{color:var(--link);text-decoration:none}
+  .p .job{position:relative;padding-left:20px;margin-bottom:24px}
+  .p .job::before{content:"";position:absolute;left:0;top:7px;bottom:2px;width:2px;background:var(--rule)}
+  .p .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;align-items:baseline}
+  .p .job-title{font-family:var(--mono);font-weight:700;color:var(--head);font-size:15px}.p .job-co{color:var(--amber)}
+  .p .job-date{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .p .job-loc{font-family:var(--mono);font-size:12px;color:var(--muted);margin:1px 0 9px}
+  .p ul{list-style:none}.p .job li{position:relative;padding-left:18px;margin-bottom:5px}
+  .p .job li::before{content:"›";position:absolute;left:0;color:var(--amber);font-family:var(--mono)}
+  .p .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .p .card{background:var(--panel2);border:1px solid #2c333d;border-radius:8px;padding:16px 18px;transition:.15s;display:flex;flex-direction:column}
+  .p .card:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+  .p .card h3{font-family:var(--mono);font-size:14px;color:var(--head);display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
+  .p .card h3 a{color:var(--link);text-decoration:none;font-size:11px;font-weight:400;white-space:nowrap}
+  .p .card p{font-size:13px;color:var(--text);flex:1}
+  .p .stats{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:11px;font-family:var(--mono);font-size:11.5px}
+  .p .stats .s{color:var(--muted)}.p .stats .s b{color:var(--amber);font-weight:500}.p .stats .badge{color:var(--green)}
+  .p .row-tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+  .p .tag{font-family:var(--mono);font-size:10.5px;color:var(--amber);border:1px solid var(--amber-dim);border-radius:4px;padding:1px 6px}
+  .p .more{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .p .more b{color:var(--green)}.p .more a{color:var(--link);text-decoration:none}.p .more a:hover{color:var(--head)}
+  .p .skill-row{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+  .p .skill-k{font-family:var(--mono);font-size:13px;color:var(--amber);min-width:150px;flex-shrink:0}
+  .p .skill-v{font-size:14px}
+  .p .twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .p .mini{font-family:var(--mono);font-size:13px}.p .mini .ml{color:var(--head);font-weight:500}.p .mini .ms{color:var(--muted);font-size:12px;margin-top:2px}
+  .p footer{margin-top:48px;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+  /* ATS */
+  .a{background:#fff;color:#1a1a1a;max-width:8.5in;margin:0 auto;padding:0.55in 0.62in;font-family:Arial,Helvetica,sans-serif;box-shadow:0 4px 30px rgba(0,0,0,.4)}
+  .a .aname{font-size:25px;font-weight:700;color:#111;letter-spacing:.5px}
+  .a .arole{font-size:12.5px;color:#444;margin:2px 0 6px}
+  .a .acontact{font-size:11.5px;color:#222;line-height:1.5}.a .acontact a{color:#1a5276;text-decoration:none}
+  .a h2{font-size:12.5px;font-weight:700;color:#111;text-transform:uppercase;letter-spacing:1px;border-bottom:1.5px solid #333;padding-bottom:3px;margin:16px 0 8px}
+  .a .asum{font-size:12px;color:#222}
+  .a .aexp{margin-bottom:11px}
+  .a .aexp-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .a .aexp-role{font-size:12.5px;font-weight:700;color:#111}.a .aexp-co{font-weight:700}
+  .a .aexp-date{font-size:11px;color:#555;white-space:nowrap}
+  .a .aexp-loc{font-size:11px;color:#555;font-style:italic;margin-bottom:3px}
+  .a ul{margin:0 0 0 17px}.a li{font-size:11.5px;color:#222;margin-bottom:2.5px}
+  .a .askill,.a .aproj,.a .aedu{font-size:11.5px;color:#222;margin-bottom:3px}
+  .a .askill b,.a .aproj b,.a .aedu b{color:#111}
+  .hidden{display:none!important}
+  a:focus-visible,.chip:focus-visible,.tbtn:focus-visible,.modebtn:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  @media (max-width:620px){.p .grid,.p .twocol{grid-template-columns:1fr}.p .skill-k{min-width:0}body.mode-portfolio,body.mode-ats{padding:14px 12px 60px}}
+  @media (prefers-reduced-motion:reduce){.p .cursor{animation:none}*{transition:none!important}}
+  @media print{
+    .controls{display:none!important}
+    body.mode-ats{background:#fff;padding:0}.a{box-shadow:none;max-width:none;padding:0}
+    @page{margin:13mm}
+    body.mode-portfolio{background:#fff;color:#2a2a2a;padding:0;font-size:10pt}
+    .p .term-bar,.p .cursor{display:none}.p .hero{padding:6px 0 16px;border:none;background:#fff}
+    .p .card{background:#fafafa;border:1px solid #ccc;break-inside:avoid}
+    .p .name{color:#111}.p .role,.p .job-co,.p .skill-k,.p .stats .s b{color:#8a5a12}
+    .p .job-title,.p .card h3,.p .mini .ml,.p .sechead .c{color:#111}
+    .p .blurb,.p .card p,.p .skill-v,.p .job li{color:#2a2a2a}.p .blurb .hl{color:#111}
+    .p .job-loc,.p .mini .ms,.p .meta span,.p .secsub,.p .sechead .note,.p .more{color:#555}
+    .p .sechead{border-color:#ccc}.p .sechead .pp{color:#666}.p .sechead .u{color:#8a5a12}
+    .p .meta a,.p .card h3 a,.p .secsub a,.p .more a{color:#1a5a6e}
+    .p .job li::before,.p .tag{color:#8a5a12}.p .tag{border-color:#c9a96b}
+    .p .stats .badge{color:#2e7d4f}.p section{margin-top:18px}.p .job{page-break-inside:avoid}
+    .a .aexp{page-break-inside:avoid}
+  }
+</style>
 </head>
+<body class="mode-portfolio">
+<div class="wrap">
+  <div class="controls">
+    <div class="crow">
+      <span class="lbl"><b>view</b></span>
+      <button class="modebtn on" data-m="portfolio" onclick="setMode('portfolio',this)">◆ Portfolio</button>
+      <button class="modebtn" data-m="ats" onclick="setMode('ats',this)">▭ ATS Resume</button>
+      <span class="sp"></span>
+      <button class="tbtn" onclick="loadRepos()">⟳ sync repos</button>
+      <button class="tbtn" onclick="window.print()">⎙ Save as PDF</button>
+    </div>
+    <div class="crow">
+      <span class="lbl"><b>curate</b></span>
+      <button class="chip on" data-f="all" onclick="setFilter('all',this)">All</button>
+      <button class="chip" data-f="lead" onclick="setFilter('lead',this)">Leadership</button>
+      <button class="chip" data-f="ai" onclick="setFilter('ai',this)">AI Agents</button>
+      <button class="chip" data-f="crypto" onclick="setFilter('crypto',this)">Blockchain</button>
+      <button class="chip" data-f="security" onclick="setFilter('security',this)">Security</button>
+      <button class="chip" data-f="infra" onclick="setFilter('infra',this)">Infrastructure</button>
+      <button class="chip" data-f="fullstack" onclick="setFilter('fullstack',this)">Full-Stack</button>
+    </div>
+  </div>
+  <div id="stage"></div>
+</div>
 
+<script>
+//=================== MASTER DATA — single source of truth ===================
+const RESUME = {
+  name:"NOAH WARDELL",
+  tagline:"Software Engineer · Technical Leadership · Blockchain · AI Agents · Privacy",
+  location:"Brick, New Jersey", email:"ncwardell@gmail.com", phone:"908-902-3731",
+  links:{github:"github.com/ncwardell", linkedin:"linkedin.com/in/noahwardell", upwork:"upwork.com/freelancers/noahwardell"},
+  urls:{github:"https://github.com/ncwardell", linkedin:"https://www.linkedin.com/in/noahwardell",
+        upwork:"https://www.upwork.com/freelancers/~01d03aebda814c57ff", email:"mailto:ncwardell@gmail.com"},
+  summary:"Self-taught engineer since age 7, building full-stack apps, self-hosted infrastructure, smart contracts, and AI-agent systems end to end. I've co-founded multiple ventures and led distributed engineering teams, and I currently serve as a CTO — equally comfortable as the technical leader or the one person who wears every hat. My published AI-agent tooling has surpassed 140K executions, and I'm drawn to crypto and security through a real conviction about privacy and self-sovereignty. I ship fast with AI-assisted development.",
+  summaries:{
+    ai:"AI-agent engineer with real production experience — not demos. I built and shipped Digital-Life, a cognition-and-memory system for AI agents delivered as MCP servers, with 140K+ executions and listings that are published, verified, and featured on their marketplace. Self-taught since age 7, I design the tools, memory, and orchestration that let agents reason and act reliably, and I own the full stack around them. Deep TypeScript/Node and heavy hands-on AI-assisted development, with shipped traction most engineers can't show.",
+    crypto:"Blockchain engineer with shipped, production smart-contract and SDK experience. I built and published the official TypeScript SDK for an L1 chain (npm) and engineered Solidity contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain, owning the security and correctness that safeguarded user funds. Self-taught since age 7, with from-scratch implementations of zero-knowledge proofs and a hashing algorithm, deep Solidity/EVM/DeFi fluency, and a real conviction about privacy and self-sovereignty.",
+    security:"Security-minded engineer working in applied cryptography, zero-trust networking, and high-risk compliance. I built a peer-to-peer orchestration platform secured with AES-256-GCM, Argon2id key wrapping, constant-time authentication, and credential rotation; implemented from-scratch cryptography including zero-knowledge proofs and a hashing algorithm; and ran payments, fraud-mitigation, and KYC/age-verification compliance for a high-risk marketplace. Self-taught since age 7, drawn to security through a real conviction about privacy and self-sovereignty.",
+    infra:"Infrastructure and systems engineer who builds things in order to run them myself. I architected a masterless, peer-to-peer container orchestrator over an encrypted Cloudflare mesh, run network-segmented self-hosted infrastructure (WireGuard, Cloudflare Zero Trust, reverse proxies), and design ETL pipelines and multi-tenant platforms end to end. Self-taught since age 7, fluent across Docker, Cloudflare, AWS, and serverless, and comfortable owning the whole stack from metal to deploy.",
+    lead:"Technical leader and founder. I currently serve as a CTO, have co-founded multiple ventures, and have led distributed engineering teams — including offshore engineers in India — setting technical strategy and shipping products end to end. Self-taught since age 7, equally comfortable directing a team or being the one person who builds it. My published work has surpassed 140K executions, and I pair hands-on engineering with the judgment to own the roadmap.",
+    fullstack:"Full-stack engineer who ships complete products end to end — front end, backend, data, and deployment. Self-taught since age 7, I build web apps, APIs, and internal tooling across TypeScript/Node and React, lean heavily on AI-assisted development to move fast, and am comfortable being the only person a project needs. I own everything from architecture to the running deployment."
+  },
 
-<body>
+  experience:[
+    {role:"Chief Technology Officer", company:"ReportNexus & CWAdagency", loc:"Brick, New Jersey", dates:"Jun 2024 — Present", bullets:[
+      {t:"Lead engineering and the technical roadmap across two products: ReportNexus, a multi-tenant white-labeled reporting SaaS platform (56 user accounts), and CWAdagency, a geofencing advertising agency that has served 200+ paying clients.", tags:["core","lead"]},
+      {t:"Direct the engineering team and set technical strategy as the company's CTO.", tags:["lead"]},
+      {t:"Own the full stack end to end: backend, data ingestion, infrastructure, and deployment.", tags:["core","infra"]},
+      {t:"Architected and built an ETL pipeline that ingests and analyzes advertising-performance data from multiple geo-targeting and geofencing sources into client-ready reporting.", tags:["infra"]},
+      {t:"Designed the multi-tenant architecture with per-tenant white-labeling and customizable dashboards.", tags:["infra"]},
+      {t:"Implemented tenant isolation and access boundaries to keep client data segregated across accounts.", tags:["security"]}
+    ]},
+    {role:"Blockchain Developer", company:"Phantasma Chain", loc:"Lisbon, Portugal · Remote", dates:"Nov 2021 — Feb 2023", bullets:[
+      {t:"Built and published phantasma-ts, the official TypeScript/JavaScript SDK for an L1 blockchain (npm), cutting integration friction for third-party developers.", tags:["crypto"]},
+      {t:"Engineered secure, gas-efficient Solidity smart contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain.", tags:["crypto","security"]},
+      {t:"Ensured contract security and correctness, directly safeguarding user funds throughout the migration.", tags:["security"]},
+      {t:"Built developer tooling for testing and interacting with on-chain smart contracts.", tags:["crypto"]},
+      {t:"Collaborated within a distributed international engineering team, coordinating across time zones under tight delivery timelines.", tags:["lead"]}
+    ]},
+    {role:"Founder & CEO", company:"Umbra Industries", loc:"Wyoming · Remote", dates:"Jun 2021 — Present", bullets:[
+      {t:"Founder & CEO (2021–2025) of a multi-branch venture, then continued under the brand as an independent freelance practice (2025–Present).", tags:["core","lead"]},
+      {t:"Ran two branches as CEO: Umbra Tech (custom development, dApps, smart contracts, cloud & virtualization) and Umbra Financial (risk analysis, portfolio management, and crypto strategy & consulting).", tags:["lead","crypto"]},
+      {t:"Managed distributed development teams — including offshore engineers in India — across client engagements.", tags:["lead"]},
+      {t:"Now build and publish AI-agent infrastructure — the Digital-Life cognition & memory system — as MCP servers on Rival, surpassing 140K executions across published tools.", tags:["ai"]},
+      {t:"Architect scalable stacks (AWS, Docker, TypeScript, Solidity) integrating smart contracts and DeFi protocols; advise clients on operational and financial risk.", tags:["crypto","infra"]}
+    ]},
+    {role:"Co-Founder & Technical Lead", company:"Creamer, LLC", loc:"Remote", dates:"2020 — 2023", bullets:[
+      {t:"Co-founded and built a two-sided, high-risk content marketplace with bounty-based commissioning, where requesters posted bounties, creators fulfilled them, and funds released on delivery through escrow.", tags:["lead"]},
+      {t:"Built and managed the development team that delivered the platform.", tags:["lead"]},
+      {t:"Implemented high-risk merchant payment processing, escrow, and creator payouts with chargeback and fraud-mitigation controls.", tags:["security"]},
+      {t:"Built age-verification and identity (KYC) compliance workflows, and managed high-risk payment-provider relationships.", tags:["security"]}
+    ]},
+    {role:"Crypto Trader & Consultant", company:"Independent", loc:"Remote", dates:"Sep 2020 — Jun 2021", bullets:[
+      {t:"Advised early-stage crypto projects on tokenomics, liquidity provision, DEX/AMM mechanics, and DAO creation, with ongoing market and project analysis.", tags:["crypto"]},
+      {t:"Coordinated centralized-exchange listings and drove tokenomic changes to improve project sustainability.", tags:["crypto"]}
+    ]},
+    {role:"Freelance Blockchain Developer", company:"Independent", loc:"Remote", dates:"Jul 2020 — Nov 2020", bullets:[
+      {t:"Automated on-chain transactions via Web3/RPC in JavaScript and developed ERC-20 Solidity contracts on Ethereum.", tags:["crypto"]},
+      {t:"Designed a back-end API server for a private crypto exchange with direct blockchain integration.", tags:["crypto","infra"]}
+    ]},
+    {role:"Technology Intern", company:"Decooda", loc:"Atlanta, Georgia", dates:"May 2019 — Jun 2020", bullets:[
+      {t:"Configured and supported network infrastructure with Azure VPN and Virtual Desktop Infrastructure (VDI), maintaining secure, consistent access across a multi-user environment.", tags:["infra","security"]},
+      {t:"Built web crawling/scraping tooling and maintained internal company websites.", tags:["fullstack"]},
+      {t:"Managed office IT systems, business accounts, and networks; ran technology upgrades and provided in-office technical support.", tags:["infra"]}
+    ]}
+  ],
 
-	<h1>Welcome to Payment Services</h1>
-    	<h3>Here at Payment Services, we are dedicated to making sure that all your transactions go smoothly!</h3>
+  // unified, deduplicated, enriched. repo = matching GitHub name (excluded from the live "more" list)
+  projects:[
+    {title:"Digital-Life: Rival Memory", link:"https://cortexone.rival.io/organization/umbra-industries-dao",
+     desc:"A persistent long-term memory system for AI agents, delivered as an MCP server on Rival — the most-used tool in the Digital-Life suite.",
+     stats:[{label:"executions",val:"104K"},{badge:"published · verified"}], tags:["ai"], chips:["MCP","AI Agents","Memory"]},
+    {title:"Digital-Life: Basic Cognition", link:"https://cortexone.rival.io/marketplace/umbra-industries-dao/digital-life-basic-cognition",
+     desc:"A reasoning and cognition layer for AI agents (MCP server) — published, verified, and featured on the marketplace with a perfect rating.",
+     stats:[{label:"executions",val:"23.6K"},{badge:"featured · 5.0★"}], tags:["ai"], chips:["MCP","AI Agents","Cognition"]},
+    {title:"Rival Tooling Suite", link:"https://cortexone.rival.io/organization/umbra-industries-dao",
+     desc:"Eleven developer tools and agents published on Rival — language code sandboxes (Python, JavaScript, Lua) and GitHub, Internet, and Blockchain utility MCP servers.",
+     stats:[{label:"total executions",val:"143K+"},{label:"published",val:"5"}], tags:["ai","infra"], chips:["MCP","Developer Tools","Serverless"]},
+    {title:"Jetty", repo:"jetty", link:"https://github.com/ncwardell/Jetty",
+     desc:"A masterless, peer-to-peer container orchestrator over an encrypted Cloudflare WARP mesh — AES-256-GCM secrets with Argon2id key wrapping, a three-tier credential model with key rotation, constant-time authentication, deterministic leader-election failover, multi-architecture (AMD64/ARM64) workloads, blue-green deploys, and a web dashboard with full OpenAPI docs.",
+     stats:[{badge:"zero-trust · self-hosted"}], tags:["infra","security"], chips:["Distributed Systems","Zero-Trust","Orchestration"]},
+    {title:"Cross-Chain Token Migration", link:null,
+     desc:"Secure, gas-efficient Solidity contracts (OpenZeppelin) for a multi-million-dollar token migration spanning Ethereum and Binance Chain, built at Phantasma Chain — contract correctness directly protected user funds.",
+     stats:[{badge:"Ethereum + Binance Chain"}], tags:["crypto","security"], chips:["Solidity","Smart Contracts","Cross-Chain"]},
+    {title:"phantasma-ts", link:"https://www.npmjs.com/package/phantasma-ts",
+     desc:"The official TypeScript/JavaScript SDK for the Phantasma L1 blockchain, built and published to npm to reduce integration friction for third-party developers.",
+     stats:[{badge:"published on npm"}], tags:["crypto"], chips:["TypeScript","SDK","Blockchain"]},
+    {title:"ZK-TS", repo:"zk-ts", link:"https://github.com/ncwardell/ZK-TS",
+     desc:"Zero-knowledge proofs implemented in TypeScript from scratch — the privacy primitive behind confidential transactions.",
+     stats:[], tags:["crypto","security"], chips:["Zero-Knowledge","Cryptography","Privacy"]},
+    {title:"VerusHash-TS", repo:"verushash-ts", link:"https://github.com/ncwardell/VerusHash-TS",
+     desc:"A pure-TypeScript, from-scratch implementation of the VerusHash algorithm used by a privacy-focused chain — low-level cryptographic work with no shortcuts.",
+     stats:[], tags:["crypto","security"], chips:["Cryptography","Hashing","Privacy"]},
+    {title:"GnosisSafe-HedgeFund", repo:"gnosissafe-hedgefund", link:"https://github.com/ncwardell/GnosisSafe-HedgeFund",
+     desc:"A Gnosis Safe–powered hedge-fund smart contract — multisig treasury management for pooled, on-chain funds.",
+     stats:[], tags:["crypto"], chips:["Solidity","Multisig","DeFi"]},
+    {title:"NanoWarp", repo:"nanowarp", link:"https://github.com/ncwardell/NanoWarp",
+     desc:"A lightweight, modular API framework built on Bun, with a custom filesystem-based database for fast data integration.",
+     stats:[], tags:["infra","fullstack"], chips:["Bun","API Framework","TypeScript"]},
+    {title:"Snagger", repo:"snagger", link:"https://github.com/ncwardell/Snagger",
+     desc:"An IPTV manager that generates M3U and EPG playlists from free sources — a practical, end-to-end TypeScript app.",
+     stats:[], tags:["fullstack"], chips:["TypeScript","Full-Stack"]},
+    {title:"Self-Hosted Home Lab", link:null,
+     desc:"Network-segmented self-hosted infrastructure — WireGuard, Cloudflare Tunnels / Zero Trust, reverse proxies, Nextcloud, Emby, and a hardened mail server across a multi-node Raspberry Pi cluster.",
+     stats:[{badge:"zero-trust · self-hosted"}], tags:["infra","security"], chips:["WireGuard","Cloudflare","Self-Hosted"]}
+  ],
 
-	<br>
-	<h4>Please contact </h4>
-	<p align="center">
-	<a href="mailto:support@paymentservices.wtf"> support@paymentservices.wtf</a>
-	</p>
-	<h4>or call</h4>
-    	<p align="center">(484) 283-2448</p>
-	<h4> If you have any problems</h4>
+  skills:[
+    {k:"leadership", label:"Leadership", v:"Team leadership & management, hiring & mentoring, distributed/offshore teams (incl. India), co-founding, technical strategy & roadmap ownership, stakeholder & client management, partnerships", tags:["lead"]},
+    {k:"languages", label:"Languages", v:"TypeScript, JavaScript, Node.js, Solidity, Python (plus AI-assisted work in other stacks)", tags:["core"]},
+    {k:"ai agents", label:"AI Agents", v:"MCP server development, AI-agent cognition & memory systems, tool/function design, agent orchestration, prompt engineering, published marketplace tools (140K+ executions)", tags:["ai"]},
+    {k:"blockchain", label:"Blockchain", v:"Solidity, web3.js, EVM, OpenZeppelin, smart-contract security, cross-chain token migration (ETH/BSC), DeFi, multisig (Gnosis Safe), tokenomics, SDK development, zero-knowledge proofs, privacy coins", tags:["crypto"]},
+    {k:"infrastructure", label:"Infrastructure", v:"Docker, Cloudflare WARP / Tunnels / Zero Trust, WireGuard, Nginx, reverse proxies, AWS, serverless / FaaS, Bun, self-hosted Linux, P2P / gossip systems, DNS", tags:["infra"]},
+    {k:"security & privacy", label:"Security & Privacy", v:"Applied & from-scratch cryptography (AES-256-GCM, Argon2id, hashing, ZK proofs), secrets management & key rotation, zero-trust networking, opsec, fraud & chargeback mitigation, KYC / age-verification compliance", tags:["security"]},
+    {k:"backend & data", label:"Backend & Data", v:"ETL pipelines, REST APIs, multi-tenant SaaS, distributed systems", tags:["core"]},
+    {k:"full-stack", label:"Full-Stack", v:"React front ends (AI-assisted), web apps, web scraping, Discord bots", tags:["fullstack"]}
+  ],
+  education:[{l:"Computer Science",s:"Kutztown University of Pennsylvania · 2018–2020"}],
+  certs:[{l:"Google Digital Garage",s:"Fundamentals of Digital Marketing"}]
+};
 
+const REPO_NOTES={"phantasmaconnect":"A tool for testing and interacting with Phantasma smart contracts."};
+let MODE='portfolio', FILTER='all', REPOS=[], REPONOTE="loading…";
+const esc=s=>(s||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const vis=tags=>FILTER==='all'||tags.includes(FILTER)||tags.includes('core');
+const summaryFor=()=>(RESUME.summaries&&RESUME.summaries[FILTER])||RESUME.summary;
+const hlSummary=s=>s
+  .replace('Self-taught engineer since age 7','<span class="hl">Self-taught engineer since age 7</span>')
+  .replace('Self-taught since age 7','<span class="hl">Self-taught since age 7</span>')
+  .replace('privacy and self-sovereignty','<span class="hl">privacy and self-sovereignty</span>')
+  .replace('140K+ executions','<span class="hl">140K+ executions</span>');
+const featuredRepos=()=>new Set(RESUME.projects.filter(p=>p.repo).map(p=>p.repo));
+
+// remaining public repos not already featured
+function extraRepos(){
+  const feat=featuredRepos(); const seen=new Set();
+  return (REPOS||[]).filter(r=>!r.fork && !feat.has(r.name.toLowerCase()) && !seen.has(r.name)&&seen.add(r.name))
+    .sort((a,b)=>(b.stargazers_count-a.stargazers_count)||(new Date(b.updated_at||0)-new Date(a.updated_at||0)));
+}
+
+//=================== PORTFOLIO ===================
+function renderPortfolio(){
+  const R=RESUME;
+  const meta=`<span><span class="k">loc</span> ${esc(R.location)}</span>
+    <a href="${R.urls.email}"><span class="k">mail</span> ${esc(R.email)}</a>
+    <span><span class="k">tel</span> ${esc(R.phone)}</span>
+    <a href="${R.urls.github}"><span class="k">git</span> ${esc(R.links.github)}</a>
+    <a href="${R.urls.linkedin}"><span class="k">in</span> ${esc(R.links.linkedin)}</a>
+    <a href="${R.urls.upwork}"><span class="k">up</span> ${esc(R.links.upwork)}</a>`;
+  const proj=R.projects.filter(p=>vis(p.tags)).map(p=>{
+    const stats=(p.stats||[]).map(s=>s.badge?`<span class="s badge">✓ ${esc(s.badge)}</span>`:`<span class="s"><b>${esc(s.val)}</b> ${esc(s.label)}</span>`).join("");
+    const chips=(p.chips||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    const link=p.link?`<a href="${esc(p.link)}">${p.repo?'repo':'link'} ↗</a>`:`<span style="color:var(--muted);font-size:11px">private</span>`;
+    return `<div class="card"><h3>${esc(p.title)} ${link}</h3><p>${esc(p.desc)}</p><div class="stats">${stats}</div><div class="row-tags">${chips}</div></div>`;
+  }).join("");
+  const extras=(FILTER==='all')?extraRepos():[];
+  const moreLine=extras.length?`<div class="more"><b>${esc(REPONOTE)}</b> · more on github: ${extras.map(r=>`<a href="${esc(r.html_url)}">${esc(r.name)}</a>`).join(", ")}</div>`:"";
+  const exp=R.experience.map(j=>{const bl=j.bullets.filter(b=>vis(b.tags)); if(!bl.length)return"";
+    return `<div class="job"><div class="job-top"><div class="job-title">${esc(j.role)} <span class="job-co">@ ${esc(j.company)}</span></div><div class="job-date">${esc(j.dates)}</div></div>
+      <div class="job-loc">${esc(j.loc)}</div><ul>${bl.map(b=>`<li>${b.t}</li>`).join("")}</ul></div>`;}).join("");
+  const skills=R.skills.filter(s=>vis(s.tags)).map(s=>`<div class="skill-row"><div class="skill-k">${esc(s.k)}</div><div class="skill-v">${s.v.replace(/\(([^)]+)\)/,'<span style="color:var(--muted)">($1)</span>')}</div></div>`).join("");
+  const sec=(cmd,inner,sub)=>inner?`<section><div class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">${cmd}</span></span></div>${sub||''}${inner}</section>`:"";
+  document.getElementById('stage').innerHTML=`<div class="p">
+    <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="tt">noah@wardell: ~</span></div>
+    <header class="hero">
+      <div class="cmdline"><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">whoami</span><span class="cursor"></span></div>
+      <h1 class="name">${esc(R.name)}</h1><div class="role">${esc(R.tagline)}</div>
+      <p class="blurb">${hlSummary(summaryFor())}</p>
+      <div class="meta">${meta}</div></header>
+    ${sec('cat projects.md',`<div class="grid">${proj}</div>${moreLine}`,'<div class="secsub">Consolidated work — public repos, private builds, and marketplace tooling on <a href="https://cortexone.rival.io/organization/umbra-industries-dao">Rival → Umbra Industries</a>.</div>')}
+    ${sec('cat experience.log',exp)}
+    ${sec('cat skills.conf',skills)}
+    <section><div class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">cat education.txt certs.txt</span></span></div>
+      <div class="twocol"><div class="mini"><div class="ml">${esc(R.education[0].l)}</div><div class="ms">${esc(R.education[0].s)}</div></div>
+      <div class="mini"><div class="ml">${esc(R.certs[0].l)}</div><div class="ms">${esc(R.certs[0].s)}</div></div></div></section>
+    <footer>// master profile · switch to ATS view, curate, and Save as PDF to generate a targeted resume</footer></div>`;
+}
+
+//=================== ATS ===================
+function atsHTML(){
+  const R=RESUME;
+  const contact=[esc(R.location),`<a href="${R.urls.email}">${esc(R.email)}</a>`,esc(R.phone),
+    `<a href="${R.urls.github}">${esc(R.links.github)}</a>`,`<a href="${R.urls.linkedin}">${esc(R.links.linkedin)}</a>`,
+    `<a href="${R.urls.upwork}">${esc(R.links.upwork)}</a>`].join(" &nbsp;|&nbsp; ");
+  const exp=R.experience.map(j=>{const bl=j.bullets.filter(b=>vis(b.tags)); if(!bl.length)return"";
+    return `<div class="aexp"><div class="aexp-top"><div class="aexp-role">${esc(j.role)} — <span class="aexp-co">${esc(j.company)}</span></div><div class="aexp-date">${esc(j.dates)}</div></div>
+      <div class="aexp-loc">${esc(j.loc)}</div><ul>${bl.map(b=>`<li>${b.t}</li>`).join("")}</ul></div>`;}).join("");
+  const proj=R.projects.filter(p=>vis(p.tags)).map(p=>`<div class="aproj"><b>${esc(p.title)}</b> — ${esc(p.desc)}</div>`).join("");
+  const extras=(FILTER==='all')?extraRepos().map(r=>esc(r.name)).slice(0,10).join(", "):"";
+  const extraLine=extras?`<div class="aproj" style="margin-top:4px"><b>Additional open source</b> (${esc(R.links.github)}): ${extras}</div>`:"";
+  const skills=R.skills.filter(s=>vis(s.tags)).map(s=>`<div class="askill"><b>${esc(s.label||s.k)}:</b> ${esc(s.v)}</div>`).join("");
+  return `<div class="a" id="ats-doc">
+    <div class="aname">${esc(R.name)}</div><div class="arole">${esc(R.tagline)}</div>
+    <div class="acontact">${contact}</div>
+    <h2>Summary</h2><div class="asum">${esc(summaryFor())}</div>
+    <h2>Experience</h2>${exp}
+    ${(proj||extraLine)?'<h2>Projects</h2>'+proj+extraLine:''}
+    <h2>Skills</h2>${skills}
+    <h2>Education</h2><div class="aedu"><b>${esc(R.education[0].l)}</b> — ${esc(R.education[0].s)}</div>
+    <h2>Certifications</h2><div class="aedu">${esc(R.certs[0].l)} — ${esc(R.certs[0].s)}</div></div>`;
+}
+
+//=================== CONTROL ===================
+function render(){ MODE==='ats'?document.getElementById('stage').innerHTML=atsHTML():renderPortfolio(); }
+function setMode(m,btn){ MODE=m; document.body.className='mode-'+m;
+  document.querySelectorAll('.modebtn').forEach(b=>b.classList.remove('on')); if(btn)btn.classList.add('on'); render(); }
+function setFilter(f,btn){ FILTER=f; document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); if(btn)btn.classList.add('on'); render(); }
+async function loadRepos(){
+  REPONOTE="loading…";
+  try{ const res=await fetch("https://api.github.com/users/ncwardell/repos?per_page=100&sort=updated",{headers:{Accept:"application/vnd.github+json"}});
+    if(!res.ok)throw new Error("HTTP "+res.status); const data=await res.json(); if(!Array.isArray(data))throw new Error("bad");
+    REPOS=data; REPONOTE="● live · "+data.filter(r=>!r.fork).length+" public repos";
+  }catch(e){ REPOS=[]; REPONOTE="● github offline"; }
+  render();
+}
+render(); loadRepos();
+</script>
 </body>
-
-
-
 </html>
