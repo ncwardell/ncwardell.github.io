@@ -4,11 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Noah Wardell — Engineer</title>
+<meta name="description" content="Noah Wardell — software engineer, CTO, and founder. Full-stack, blockchain & smart contracts, AI-agent (MCP) tooling with 140K+ executions, and privacy/security engineering.">
+<meta name="author" content="Noah Wardell">
+<link rel="canonical" href="https://ncwardell.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230E1116'/%3E%3Ctext x='50' y='72' font-family='monospace' font-size='62' fill='%23E6A23C' text-anchor='middle'%3E$_%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Noah Wardell — Engineer">
+<meta property="og:description" content="Software engineer, CTO, and founder. Full-stack, blockchain & smart contracts, AI-agent (MCP) tooling with 140K+ executions, and privacy/security engineering.">
+<meta property="og:url" content="https://ncwardell.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Noah Wardell — Engineer">
+<meta name="twitter:description" content="Software engineer, CTO, and founder. Blockchain, AI-agent tooling, and privacy/security engineering.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Noah Wardell","jobTitle":"Chief Technology Officer","url":"https://ncwardell.github.io/","email":"mailto:ncwardell@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Brick","addressRegion":"NJ","addressCountry":"US"},"sameAs":["https://github.com/ncwardell","https://www.linkedin.com/in/noahwardell","https://www.upwork.com/freelancers/~01d03aebda814c57ff"],"knowsAbout":["Software Engineering","Blockchain","Smart Contracts","AI Agents","Model Context Protocol","Cryptography","Privacy","Infrastructure","Technical Leadership"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0E1116; --panel:#141A21; --panel2:#171E26; --rule:#222A33;
-    --text:#C7D0D9; --head:#EAF0F6; --muted:#6E7886;
+    --text:#C7D0D9; --head:#EAF0F6; --muted:#8B95A4;
     --amber:#E6A23C; --amber-dim:#7d6126; --link:#6FB6C9; --green:#5FB37A;
     --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
     --sans:'Inter',-apple-system,system-ui,Segoe UI,Roboto,sans-serif;
@@ -93,6 +109,7 @@
   .a .askill,.a .aproj,.a .aedu{font-size:11.5px;color:#222;margin-bottom:3px}
   .a .askill b,.a .aproj b,.a .aedu b{color:#111}
   .hidden{display:none!important}
+  .phone-print{display:none}
   a:focus-visible,.chip:focus-visible,.tbtn:focus-visible,.modebtn:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
   @media (max-width:620px){.p .grid,.p .twocol{grid-template-columns:1fr}.p .skill-k{min-width:0}body.mode-portfolio,body.mode-ats{padding:14px 12px 60px}}
   @media (prefers-reduced-motion:reduce){.p .cursor{animation:none}*{transition:none!important}}
@@ -112,6 +129,7 @@
     .p .job li::before,.p .tag{color:#8a5a12}.p .tag{border-color:#c9a96b}
     .p .stats .badge{color:#2e7d4f}.p section{margin-top:18px}.p .job{page-break-inside:avoid}
     .a .aexp{page-break-inside:avoid}
+    .phone-print{display:inline!important}
   }
 </style>
 </head>
@@ -136,6 +154,9 @@
       <button class="chip" data-f="infra" onclick="setFilter('infra',this)">Infrastructure</button>
       <button class="chip" data-f="fullstack" onclick="setFilter('fullstack',this)">Full-Stack</button>
     </div>
+    <div class="crow">
+      <span class="lbl">↳ retargets the summary, projects, experience &amp; skills to one focus — your view is saved &amp; shareable via the URL</span>
+    </div>
   </div>
   <div id="stage"></div>
 </div>
@@ -145,24 +166,23 @@
 const RESUME = {
   name:"NOAH WARDELL",
   tagline:"Software Engineer · Technical Leadership · Blockchain · AI Agents · Privacy",
-  location:"Brick, New Jersey", email:"ncwardell@gmail.com", phone:"908-902-3731",
+  location:"Brick, New Jersey", email:"ncwardell@gmail.com", phoneParts:["908","902","3731"],
   links:{github:"github.com/ncwardell", linkedin:"linkedin.com/in/noahwardell", upwork:"upwork.com/freelancers/noahwardell"},
   urls:{github:"https://github.com/ncwardell", linkedin:"https://www.linkedin.com/in/noahwardell",
         upwork:"https://www.upwork.com/freelancers/~01d03aebda814c57ff", email:"mailto:ncwardell@gmail.com"},
-  summary:"Self-taught engineer since age 7, building full-stack apps, self-hosted infrastructure, smart contracts, and AI-agent systems end to end. I've co-founded multiple ventures and led distributed engineering teams, and I currently serve as a CTO — equally comfortable as the technical leader or the one person who wears every hat. My published AI-agent tooling has surpassed 140K executions, and I'm drawn to crypto and security through a real conviction about privacy and self-sovereignty. I ship fast with AI-assisted development.",
+  summary:"Self-taught engineer since age 7, building full-stack apps, self-hosted infrastructure, smart contracts, and AI-agent systems end to end — and shipping fast with AI-assisted development. I've co-founded multiple ventures and led distributed engineering teams, and I currently serve as a CTO — equally comfortable as the technical leader or the one person who wears every hat. My published AI-agent tooling has surpassed 140K executions, and I'm drawn to crypto and security through a real conviction about privacy and self-sovereignty.",
   summaries:{
-    ai:"AI-agent engineer with real production experience — not demos. I built and shipped Digital-Life, a cognition-and-memory system for AI agents delivered as MCP servers, with 140K+ executions and listings that are published, verified, and featured on their marketplace. Self-taught since age 7, I design the tools, memory, and orchestration that let agents reason and act reliably, and I own the full stack around them. Deep TypeScript/Node and heavy hands-on AI-assisted development, with shipped traction most engineers can't show.",
-    crypto:"Blockchain engineer with shipped, production smart-contract and SDK experience. I built and published the official TypeScript SDK for an L1 chain (npm) and engineered Solidity contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain, owning the security and correctness that safeguarded user funds. Self-taught since age 7, with from-scratch implementations of zero-knowledge proofs and a hashing algorithm, deep Solidity/EVM/DeFi fluency, and a real conviction about privacy and self-sovereignty.",
-    security:"Security-minded engineer working in applied cryptography, zero-trust networking, and high-risk compliance. I built a peer-to-peer orchestration platform secured with AES-256-GCM, Argon2id key wrapping, constant-time authentication, and credential rotation; implemented from-scratch cryptography including zero-knowledge proofs and a hashing algorithm; and ran payments, fraud-mitigation, and KYC/age-verification compliance for a high-risk marketplace. Self-taught since age 7, drawn to security through a real conviction about privacy and self-sovereignty.",
-    infra:"Infrastructure and systems engineer who builds things in order to run them myself. I architected a masterless, peer-to-peer container orchestrator over an encrypted Cloudflare mesh, run network-segmented self-hosted infrastructure (WireGuard, Cloudflare Zero Trust, reverse proxies), and design ETL pipelines and multi-tenant platforms end to end. Self-taught since age 7, fluent across Docker, Cloudflare, AWS, and serverless, and comfortable owning the whole stack from metal to deploy.",
+    ai:"AI-agent engineer with real production experience — not demos. I built and shipped Digital-Life, a cognition-and-memory system for AI agents delivered as MCP servers, with 140K+ executions and listings that are published, verified, and featured on their marketplace. I design the tools, memory, and orchestration that let agents reason and act reliably, and I own the full stack around them. I bring deep TypeScript/Node expertise and heavy hands-on AI-assisted development, backed by shipped, measurable traction.",
+    crypto:"Blockchain engineer with shipped, production smart-contract and SDK experience. I built and published the official TypeScript SDK for an L1 chain (npm) and engineered Solidity contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain, owning the security and correctness that safeguarded user funds. With from-scratch implementations of zero-knowledge proofs and a hashing algorithm, I bring deep Solidity/EVM/DeFi fluency and a real conviction about privacy and self-sovereignty.",
+    security:"Security-minded engineer working in applied cryptography, zero-trust networking, and high-risk compliance. I built a peer-to-peer orchestration platform secured with AES-256-GCM, Argon2id key wrapping, constant-time authentication, and credential rotation; implemented from-scratch cryptography including zero-knowledge proofs and a hashing algorithm; and ran payments, fraud-mitigation, and KYC/age-verification compliance for a high-risk marketplace. I'm drawn to security through a real conviction about privacy and self-sovereignty.",
+    infra:"Infrastructure and systems engineer who builds things in order to run them myself. I architected a masterless, peer-to-peer container orchestrator over an encrypted Cloudflare mesh, run network-segmented self-hosted infrastructure (WireGuard, Cloudflare Zero Trust, reverse proxies), and design ETL pipelines and multi-tenant platforms end to end. I'm fluent across Docker, Cloudflare, AWS, and serverless, and comfortable owning the whole stack from metal to deploy.",
     lead:"Technical leader and founder. I currently serve as a CTO, have co-founded multiple ventures, and have led distributed engineering teams — including offshore engineers in India — setting technical strategy and shipping products end to end. Self-taught since age 7, equally comfortable directing a team or being the one person who builds it. My published work has surpassed 140K executions, and I pair hands-on engineering with the judgment to own the roadmap.",
-    fullstack:"Full-stack engineer who ships complete products end to end — front end, backend, data, and deployment. Self-taught since age 7, I build web apps, APIs, and internal tooling across TypeScript/Node and React, lean heavily on AI-assisted development to move fast, and am comfortable being the only person a project needs. I own everything from architecture to the running deployment."
+    fullstack:"Full-stack engineer who ships complete products end to end — front end, backend, data, and deployment. I build web apps, APIs, and internal tooling across TypeScript/Node and React, lean heavily on AI-assisted development to move fast, and am comfortable being the only person a project needs. I own everything from architecture to the running deployment."
   },
 
   experience:[
     {role:"Chief Technology Officer", company:"ReportNexus & CWAdagency", loc:"Brick, New Jersey", dates:"Jun 2024 — Present", bullets:[
-      {t:"Lead engineering and the technical roadmap across two products: ReportNexus, a multi-tenant white-labeled reporting SaaS platform (56 user accounts), and CWAdagency, a geofencing advertising agency that has served 200+ paying clients.", tags:["core","lead"]},
-      {t:"Direct the engineering team and set technical strategy as the company's CTO.", tags:["lead"]},
+      {t:"Set technical strategy and lead the engineering team across two products: ReportNexus, a multi-tenant white-labeled reporting SaaS platform, and CWAdagency, a geofencing advertising agency that has served 200+ paying clients.", tags:["core","lead"]},
       {t:"Own the full stack end to end: backend, data ingestion, infrastructure, and deployment.", tags:["core","infra"]},
       {t:"Architected and built an ETL pipeline that ingests and analyzes advertising-performance data from multiple geo-targeting and geofencing sources into client-ready reporting.", tags:["infra"]},
       {t:"Designed the multi-tenant architecture with per-tenant white-labeling and customizable dashboards.", tags:["infra"]},
@@ -170,23 +190,22 @@ const RESUME = {
     ]},
     {role:"Blockchain Developer", company:"Phantasma Chain", loc:"Lisbon, Portugal · Remote", dates:"Nov 2021 — Feb 2023", bullets:[
       {t:"Built and published phantasma-ts, the official TypeScript/JavaScript SDK for an L1 blockchain (npm), cutting integration friction for third-party developers.", tags:["crypto"]},
-      {t:"Engineered secure, gas-efficient Solidity smart contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain.", tags:["crypto","security"]},
-      {t:"Ensured contract security and correctness, directly safeguarding user funds throughout the migration.", tags:["security"]},
-      {t:"Built developer tooling for testing and interacting with on-chain smart contracts.", tags:["crypto"]},
+      {t:"Engineered secure, gas-efficient Solidity contracts to OpenZeppelin standards for a multi-million-dollar cross-chain token migration across Ethereum and Binance Chain — contract correctness directly safeguarded user funds.", tags:["crypto","security"]},
+      {t:"Created tooling for testing and interacting with on-chain smart contracts.", tags:["crypto"]},
       {t:"Collaborated within a distributed international engineering team, coordinating across time zones under tight delivery timelines.", tags:["lead"]}
     ]},
     {role:"Founder & CEO", company:"Umbra Industries", loc:"Wyoming · Remote", dates:"Jun 2021 — Present", bullets:[
-      {t:"Founder & CEO (2021–2025) of a multi-branch venture, then continued under the brand as an independent freelance practice (2025–Present).", tags:["core","lead"]},
+      {t:"Built and ran a multi-branch venture as Founder & CEO (2021–2025), then continued the brand as an independent freelance practice (2025–Present).", tags:["core","lead"]},
       {t:"Ran two branches as CEO: Umbra Tech (custom development, dApps, smart contracts, cloud & virtualization) and Umbra Financial (risk analysis, portfolio management, and crypto strategy & consulting).", tags:["lead","crypto"]},
       {t:"Managed distributed development teams — including offshore engineers in India — across client engagements.", tags:["lead"]},
-      {t:"Now build and publish AI-agent infrastructure — the Digital-Life cognition & memory system — as MCP servers on Rival, surpassing 140K executions across published tools.", tags:["ai"]},
+      {t:"Build and publish AI-agent infrastructure — the Digital-Life cognition & memory system — as MCP servers on Rival, surpassing 140K executions across published tools.", tags:["ai"]},
       {t:"Architect scalable stacks (AWS, Docker, TypeScript, Solidity) integrating smart contracts and DeFi protocols; advise clients on operational and financial risk.", tags:["crypto","infra"]}
     ]},
     {role:"Co-Founder & Technical Lead", company:"Creamer, LLC", loc:"Remote", dates:"2020 — 2023", bullets:[
       {t:"Co-founded and built a two-sided, high-risk content marketplace with bounty-based commissioning, where requesters posted bounties, creators fulfilled them, and funds released on delivery through escrow.", tags:["lead"]},
-      {t:"Built and managed the development team that delivered the platform.", tags:["lead"]},
+      {t:"Hired and led the development team that delivered the platform.", tags:["lead"]},
       {t:"Implemented high-risk merchant payment processing, escrow, and creator payouts with chargeback and fraud-mitigation controls.", tags:["security"]},
-      {t:"Built age-verification and identity (KYC) compliance workflows, and managed high-risk payment-provider relationships.", tags:["security"]}
+      {t:"Developed age-verification and identity (KYC) compliance workflows, and managed high-risk payment-provider relationships.", tags:["security"]}
     ]},
     {role:"Crypto Trader & Consultant", company:"Independent", loc:"Remote", dates:"Sep 2020 — Jun 2021", bullets:[
       {t:"Advised early-stage crypto projects on tokenomics, liquidity provision, DEX/AMM mechanics, and DAO creation, with ongoing market and project analysis.", tags:["crypto"]},
@@ -213,9 +232,9 @@ const RESUME = {
      stats:[{label:"executions",val:"23.6K"},{badge:"featured · 5.0★"}], tags:["ai"], chips:["MCP","AI Agents","Cognition"]},
     {title:"Rival Tooling Suite", link:"https://cortexone.rival.io/organization/umbra-industries-dao",
      desc:"Eleven developer tools and agents published on Rival — language code sandboxes (Python, JavaScript, Lua) and GitHub, Internet, and Blockchain utility MCP servers.",
-     stats:[{label:"total executions",val:"143K+"},{label:"published",val:"5"}], tags:["ai","infra"], chips:["MCP","Developer Tools","Serverless"]},
+     stats:[{label:"total executions",val:"143K+"},{badge:"published · verified"}], tags:["ai","infra"], chips:["MCP","Developer Tools","Serverless"]},
     {title:"Jetty", repo:"jetty", link:"https://github.com/ncwardell/Jetty",
-     desc:"A masterless, peer-to-peer container orchestrator over an encrypted Cloudflare WARP mesh — AES-256-GCM secrets with Argon2id key wrapping, a three-tier credential model with key rotation, constant-time authentication, deterministic leader-election failover, multi-architecture (AMD64/ARM64) workloads, blue-green deploys, and a web dashboard with full OpenAPI docs.",
+     desc:"A masterless, peer-to-peer container orchestrator over an encrypted Cloudflare WARP mesh. Hardened end to end: AES-256-GCM secrets with Argon2id key wrapping, a three-tier credential model with key rotation, constant-time authentication, deterministic leader-election failover, multi-architecture (AMD64/ARM64) workloads, blue-green deploys, and a web dashboard with full OpenAPI docs.",
      stats:[{badge:"zero-trust · self-hosted"}], tags:["infra","security"], chips:["Distributed Systems","Zero-Trust","Orchestration"]},
     {title:"Cross-Chain Token Migration", link:null,
      desc:"Secure, gas-efficient Solidity contracts (OpenZeppelin) for a multi-million-dollar token migration spanning Ethereum and Binance Chain, built at Phantasma Chain — contract correctness directly protected user funds.",
@@ -279,9 +298,10 @@ function extraRepos(){
 //=================== PORTFOLIO ===================
 function renderPortfolio(){
   const R=RESUME;
+  const tel=(R.phoneParts||[]).join('-');
   const meta=`<span><span class="k">loc</span> ${esc(R.location)}</span>
     <a href="${R.urls.email}"><span class="k">mail</span> ${esc(R.email)}</a>
-    <span><span class="k">tel</span> ${esc(R.phone)}</span>
+    <span class="phone-print"><span class="k">tel</span> ${esc(tel)}</span>
     <a href="${R.urls.github}"><span class="k">git</span> ${esc(R.links.github)}</a>
     <a href="${R.urls.linkedin}"><span class="k">in</span> ${esc(R.links.linkedin)}</a>
     <a href="${R.urls.upwork}"><span class="k">up</span> ${esc(R.links.upwork)}</a>`;
@@ -296,8 +316,10 @@ function renderPortfolio(){
   const exp=R.experience.map(j=>{const bl=j.bullets.filter(b=>vis(b.tags)); if(!bl.length)return"";
     return `<div class="job"><div class="job-top"><div class="job-title">${esc(j.role)} <span class="job-co">@ ${esc(j.company)}</span></div><div class="job-date">${esc(j.dates)}</div></div>
       <div class="job-loc">${esc(j.loc)}</div><ul>${bl.map(b=>`<li>${b.t}</li>`).join("")}</ul></div>`;}).join("");
+  const hiddenJobs=R.experience.filter(j=>!j.bullets.some(b=>vis(b.tags)));
+  const moreRoles=(FILTER!=='all'&&hiddenJobs.length)?`<div class="more">+ ${hiddenJobs.length} more role${hiddenJobs.length>1?'s':''} outside this focus — <button class="tbtn" style="padding:2px 8px" onclick="setFilter('all')">show all ↗</button> &nbsp;${hiddenJobs.map(j=>esc(j.role)+' @ '+esc(j.company)).join(' · ')}</div>`:"";
   const skills=R.skills.filter(s=>vis(s.tags)).map(s=>`<div class="skill-row"><div class="skill-k">${esc(s.k)}</div><div class="skill-v">${s.v.replace(/\(([^)]+)\)/,'<span style="color:var(--muted)">($1)</span>')}</div></div>`).join("");
-  const sec=(cmd,inner,sub)=>inner?`<section><div class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">${cmd}</span></span></div>${sub||''}${inner}</section>`:"";
+  const sec=(cmd,inner,sub)=>inner?`<section><h2 class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">${cmd}</span></span></h2>${sub||''}${inner}</section>`:"";
   document.getElementById('stage').innerHTML=`<div class="p">
     <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="tt">noah@wardell: ~</span></div>
     <header class="hero">
@@ -306,9 +328,9 @@ function renderPortfolio(){
       <p class="blurb">${hlSummary(summaryFor())}</p>
       <div class="meta">${meta}</div></header>
     ${sec('cat projects.md',`<div class="grid">${proj}</div>${moreLine}`,'<div class="secsub">Consolidated work — public repos, private builds, and marketplace tooling on <a href="https://cortexone.rival.io/organization/umbra-industries-dao">Rival → Umbra Industries</a>.</div>')}
-    ${sec('cat experience.log',exp)}
+    ${sec('cat experience.log',exp+moreRoles)}
     ${sec('cat skills.conf',skills)}
-    <section><div class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">cat education.txt certs.txt</span></span></div>
+    <section><h2 class="sechead"><span><span class="u">noah@wardell</span><span class="pp">:~$</span> <span class="c">cat education.txt certs.txt</span></span></h2>
       <div class="twocol"><div class="mini"><div class="ml">${esc(R.education[0].l)}</div><div class="ms">${esc(R.education[0].s)}</div></div>
       <div class="mini"><div class="ml">${esc(R.certs[0].l)}</div><div class="ms">${esc(R.certs[0].s)}</div></div></div></section>
     <footer>// master profile · switch to ATS view, curate, and Save as PDF to generate a targeted resume</footer></div>`;
@@ -317,9 +339,11 @@ function renderPortfolio(){
 //=================== ATS ===================
 function atsHTML(){
   const R=RESUME;
-  const contact=[esc(R.location),`<a href="${R.urls.email}">${esc(R.email)}</a>`,esc(R.phone),
+  const tel=(R.phoneParts||[]).join('-');
+  const contact=[esc(R.location),`<a href="${R.urls.email}">${esc(R.email)}</a>`,
     `<a href="${R.urls.github}">${esc(R.links.github)}</a>`,`<a href="${R.urls.linkedin}">${esc(R.links.linkedin)}</a>`,
-    `<a href="${R.urls.upwork}">${esc(R.links.upwork)}</a>`].join(" &nbsp;|&nbsp; ");
+    `<a href="${R.urls.upwork}">${esc(R.links.upwork)}</a>`].join(" &nbsp;|&nbsp; ")
+    +`<span class="phone-print"> &nbsp;|&nbsp; ${esc(tel)}</span>`;
   const exp=R.experience.map(j=>{const bl=j.bullets.filter(b=>vis(b.tags)); if(!bl.length)return"";
     return `<div class="aexp"><div class="aexp-top"><div class="aexp-role">${esc(j.role)} — <span class="aexp-co">${esc(j.company)}</span></div><div class="aexp-date">${esc(j.dates)}</div></div>
       <div class="aexp-loc">${esc(j.loc)}</div><ul>${bl.map(b=>`<li>${b.t}</li>`).join("")}</ul></div>`;}).join("");
@@ -339,10 +363,28 @@ function atsHTML(){
 }
 
 //=================== CONTROL ===================
+const MODES=['portfolio','ats'], FILTERS=['all','lead','ai','crypto','security','infra','fullstack'];
 function render(){ MODE==='ats'?document.getElementById('stage').innerHTML=atsHTML():renderPortfolio(); }
-function setMode(m,btn){ MODE=m; document.body.className='mode-'+m;
-  document.querySelectorAll('.modebtn').forEach(b=>b.classList.remove('on')); if(btn)btn.classList.add('on'); render(); }
-function setFilter(f,btn){ FILTER=f; document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); if(btn)btn.classList.add('on'); render(); }
+function syncButtons(){
+  document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.m===MODE));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.f===FILTER));
+}
+function persist(){
+  try{ localStorage.setItem('nw-view',MODE); localStorage.setItem('nw-filter',FILTER); }catch(e){}
+  const h=MODE+'/'+FILTER; if(location.hash.replace(/^#/,'')!==h){ history.replaceState(null,'','#'+h); }
+}
+function apply(){ document.body.className='mode-'+MODE; syncButtons(); persist(); render(); }
+function setMode(m){ if(MODES.includes(m)){ MODE=m; apply(); } }
+function setFilter(f){ if(FILTERS.includes(f)){ FILTER=f; apply(); } }
+function initState(){
+  let m,f; const h=location.hash.replace(/^#/,'').split('/');
+  if(h[0])m=h[0]; if(h[1])f=h[1];
+  try{ m=m||localStorage.getItem('nw-view'); f=f||localStorage.getItem('nw-filter'); }catch(e){}
+  MODE=MODES.includes(m)?m:'portfolio';
+  FILTER=FILTERS.includes(f)?f:'all';
+  document.body.className='mode-'+MODE; syncButtons();
+}
+window.addEventListener('hashchange',()=>{ initState(); render(); });
 async function loadRepos(){
   REPONOTE="loading…";
   try{ const res=await fetch("https://api.github.com/users/ncwardell/repos?per_page=100&sort=updated",{headers:{Accept:"application/vnd.github+json"}});
@@ -351,7 +393,7 @@ async function loadRepos(){
   }catch(e){ REPOS=[]; REPONOTE="● github offline"; }
   render();
 }
-render(); loadRepos();
+initState(); persist(); render(); loadRepos();
 </script>
 </body>
 </html>
