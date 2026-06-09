@@ -236,9 +236,10 @@ const RESUME = {
     {title:"Jetty", repo:"jetty", link:"https://github.com/ncwardell/Jetty",
      desc:"A masterless, peer-to-peer container orchestrator over an encrypted Cloudflare WARP mesh. Hardened end to end: AES-256-GCM secrets with Argon2id key wrapping, a three-tier credential model with key rotation, constant-time authentication, deterministic leader-election failover, multi-architecture (AMD64/ARM64) workloads, blue-green deploys, and a web dashboard with full OpenAPI docs.",
      stats:[{badge:"zero-trust · self-hosted"}], tags:["infra","security"], chips:["Distributed Systems","Zero-Trust","Orchestration"]},
-    {title:"Cross-Chain Token Migration", link:null,
-     desc:"Secure, gas-efficient Solidity contracts (OpenZeppelin) for a multi-million-dollar token migration spanning Ethereum and Binance Chain, built at Phantasma Chain — contract correctness directly protected user funds.",
-     stats:[{badge:"Ethereum + Binance Chain"}], tags:["crypto","security"], chips:["Solidity","Smart Contracts","Cross-Chain"]},
+    {title:"Cross-Chain Token Migration",
+     links:[{l:"Etherscan",u:"https://etherscan.io/address/0x6ed8580B2f5e9559aC15cfC73c4DA3D3F9bCd070"},{l:"BscScan",u:"https://bscscan.com/address/0x8690530ff1Bb6EfDA7896c3550c531D37eaf4Ed1"}],
+     desc:"Secure, gas-efficient Solidity contracts (OpenZeppelin) for a multi-million-dollar token migration spanning Ethereum and Binance Chain, built at Phantasma Chain. Deployed and verified on-chain on both networks; contract correctness directly protected user funds.",
+     stats:[{badge:"Ethereum + Binance Chain"},{badge:"verified on-chain"}], tags:["crypto","security"], chips:["Solidity","Smart Contracts","Cross-Chain"]},
     {title:"phantasma-ts", link:"https://www.npmjs.com/package/phantasma-ts",
      desc:"The official TypeScript/JavaScript SDK for the Phantasma L1 blockchain, built and published to npm to reduce integration friction for third-party developers.",
      stats:[{badge:"published on npm"}], tags:["crypto"], chips:["TypeScript","SDK","Blockchain"]},
@@ -257,8 +258,11 @@ const RESUME = {
     {title:"Snagger", repo:"snagger", link:"https://github.com/ncwardell/Snagger",
      desc:"An IPTV manager that generates M3U and EPG playlists from free sources — a practical, end-to-end TypeScript app.",
      stats:[], tags:["fullstack"], chips:["TypeScript","Full-Stack"]},
+    {title:"The Apothecary", link:"https://www.theapothecary.diy/",
+     desc:"A science-based knowledge base of DIY replacements for commercial household products — chemistry-backed recipes and ingredient profiles with honest, 1–10 effectiveness ratings against the commercial versions. Structured JSON data drives a Python static-site build with a React/TypeScript front end.",
+     stats:[{label:"recipes",val:"26"},{label:"ingredients",val:"35"}], tags:["fullstack"], chips:["React","TypeScript","Python","Static Site"]},
     {title:"Self-Hosted Home Lab", link:null,
-     desc:"Network-segmented self-hosted infrastructure — WireGuard, Cloudflare Tunnels / Zero Trust, reverse proxies, Nextcloud, Emby, and a hardened mail server across a multi-node Raspberry Pi cluster.",
+     desc:"Network-segmented self-hosted infrastructure — WireGuard, Cloudflare Tunnels / Zero Trust, reverse proxies, Nextcloud, Emby, and a hardened mail server — plus a 40-phone cluster running crypto-mining software.",
      stats:[{badge:"zero-trust · self-hosted"}], tags:["infra","security"], chips:["WireGuard","Cloudflare","Self-Hosted"]}
   ],
 
@@ -308,7 +312,9 @@ function renderPortfolio(){
   const proj=R.projects.filter(p=>vis(p.tags)).map(p=>{
     const stats=(p.stats||[]).map(s=>s.badge?`<span class="s badge">✓ ${esc(s.badge)}</span>`:`<span class="s"><b>${esc(s.val)}</b> ${esc(s.label)}</span>`).join("");
     const chips=(p.chips||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
-    const link=p.link?`<a href="${esc(p.link)}">${p.repo?'repo':'link'} ↗</a>`:`<span style="color:var(--muted);font-size:11px">private</span>`;
+    const link=(p.links&&p.links.length)
+      ? p.links.map(L=>`<a href="${esc(L.u)}">${esc(L.l)} ↗</a>`).join('<span style="color:var(--muted)"> · </span>')
+      : (p.link?`<a href="${esc(p.link)}">${p.repo?'repo':'link'} ↗</a>`:`<span style="color:var(--muted);font-size:11px">private</span>`);
     return `<div class="card"><h3>${esc(p.title)} ${link}</h3><p>${esc(p.desc)}</p><div class="stats">${stats}</div><div class="row-tags">${chips}</div></div>`;
   }).join("");
   const extras=(FILTER==='all')?extraRepos():[];
